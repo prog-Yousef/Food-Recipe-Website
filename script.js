@@ -7,6 +7,9 @@ const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
 searchBtn.addEventListener('click', getMealList);
 mealList.addEventListener('click', getMealRecipe);
+recipeCloseBtn.addEventListener('click', () => {
+    mealDetailsContent.parentElement.classList.remove('showRecipe');
+});
 //Get meal list that matches with the ingredients
 
 /* function getMealList(){
@@ -42,13 +45,13 @@ async function getMealList() {
                 </div>
             </div>`;
             });
-          mealList.classList.remove('notFound');
-   } else {
+            mealList.classList.remove('notFound');
+        } else {
             html = "Sorry, no meals found.";
             mealList.classList.add('notFound');
         }
-            mealList.innerHTML = html;
-        
+        mealList.innerHTML = html;
+
         // Log the data to the console (you might want to perform other actions here)
         console.log(data);
     } catch (error) {
@@ -59,7 +62,58 @@ async function getMealList() {
 
 //get Recipe of meal
 
-function getMealRecipe (e){
-    e.preventDefault();
 
+async function getMealRecipe(e) {
+    try {
+        e.preventDefault();
+
+        if (e.target.classList.contains('recipe-btn')) {
+            let mealItem = e.target.parentElement.parentElement;
+
+            // Assuming you have a 'data-id' attribute on the mealItem element
+            const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`);
+            const data = await response.json();
+
+            // Assuming you have a function named mealRecipeModal
+            mealRecipeModal(data.meals);
+
+            // Do something with the data, for example, log it
+            console.log(data.meals);
+        }
+    } catch (error) {
+        // Handle any errors that occurred during the fetch or data processing
+        console.error('Error:', error);
+    }
 }
+
+//Create a Modal
+async function mealRecipeModal(meal) {
+    try {
+        console.log(meal);
+        meal = meal[0];
+        let html = `      <h2 class="recipe-title">${meal.strMeal}</h2>
+        <p class="recipe-category">${meal.strCategory}</p>
+        <div class="recipe-instruct">
+            <h3>instruction:</h3>
+            <li>${meal.strInstructions}</li>
+            
+        
+          
+            </div>
+        <div class="recipe-meal-img">
+            <img src="${meal.strMealThumb}" alt="Food">
+        </div>
+        <div class="recipe-link">
+            <a href="${meal.strYoutube}" target="_blank">Watch Video</a>
+        </div>`;
+        mealDetailsContent.innerHTML = html;
+        mealDetailsContent.parentElement.classList.add('showRecipe');
+
+        console.log(meal.strInstructions);
+
+    } catch (error) {
+        // Handle any errors that occurred during the fetch or data processing
+        console.error('Error:', error);
+    }
+}
+

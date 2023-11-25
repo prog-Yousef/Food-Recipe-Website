@@ -159,7 +159,7 @@ body {
 
 
 /* meal details */
-.meal-details{
+.meal-details {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -178,15 +178,16 @@ body {
     width: 90%;
     height: 90%;
     overflow-y: scroll;
-display: none;  
-  
-   padding: 2rem 0;
+    display: none;
+
+    padding: 2rem 0;
 }
 
-.meal-details::-webkit-scrollbar{
+.meal-details::-webkit-scrollbar {
     width: 10px;
 }
-.meal-details::-webkit-scrollbar-thumb{
+
+.meal-details::-webkit-scrollbar-thumb {
     background: #f0f0f0;
     border-radius: 2rem;
     -webkit-border-radius: 2rem;
@@ -198,40 +199,42 @@ display: none;
 /* JAVASCRIPT RELATED */
 
 
-.showRecipe{
+.showRecipe {
     display: block;
+
 }
 
-.meal-details-content{  /* allt som inne i detail kortet */
+.meal-details-content {
+    /* allt som inne i detail kortet */
     margin: 2rem;
-}
-.meal-details-content p:not(.recipe-category){
-padding: 1rem 0;
+
+
+    list-style-type: disc;
 }
 
-.recipe-close-btn{
+.recipe-close-btn {
     position: absolute;
     right: 2rem;
     top: 2rem;
     font-size: 1.8rem;
     background: #fff;
     border: none;
-width: 35px;
-height: 35px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-opacity: 0.9;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
 
 }
 
-.recipe-title{
+.recipe-title {
     letter-spacing: 1px;
     padding: 1rem;
 }
 
-.recipe-category{
+.recipe-category {
     background: #fff;
     font-weight: 600;
     color: var(--tenne-tawny-dark);
@@ -251,39 +254,40 @@ opacity: 0.9;
 }
 
  */
- .recipe-instruct{
+.recipe-instruct {
     padding: 1rem 0;
-    
- }
- .recipe-meal-img img{
+
+}
+
+.recipe-meal-img img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin: 0 auto;
     display: block;
 
- }
+}
 
- .recipe-link{
+.recipe-link {
     margin: 1.4rem 0;
- }
+}
 
- .recipe-link a{
-color: #fff;
-font-size: 1.2rem;
-font-weight: 700;
-transition: all 0.4s linear;
- }
+.recipe-link a {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: all 0.4s linear;
+}
 
- .recipe-link a:hover{
-opacity: 0.8;
- }
+.recipe-link a:hover {
+    opacity: 0.8;
+}
 
 /*  */
-.notFound{
-    grid-template-columns: 1fr!important;
+.notFound {
+    grid-template-columns: 1fr !important;
     color: var(--tenne-tawny);
-    font-size: 1.8rem ;
+    font-size: 1.8rem;
     font-weight: 600;
     width: 100%;
 
@@ -318,7 +322,8 @@ opacity: 0.8;
     .meal-item {
         margin: 0;
     }
-    .meal-details{
+
+    .meal-details {
         width: 700px;
 
     }
